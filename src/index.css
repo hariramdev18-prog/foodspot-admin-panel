@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@layer components {
+  .table-th {
+    @apply px-4 py-3 text-left text-sm font-medium text-gray-600 border-b;
+  }
+
+  .table-td {
+    @apply px-4 py-3 border-b text-sm text-gray-700;
+  }
+
+  .table-tr {
+    @apply hover:bg-gray-50 transition-colors;
+  }
+}
