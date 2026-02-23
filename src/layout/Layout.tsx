@@ -1,11 +1,24 @@
-import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import SideBar from "../components/SideBar";
 import Header from "../components/Header";
-import { Menu } from "lucide-react";
+import { Menu, LogOut } from "lucide-react";
+import { LoginContext } from "../context/LoginContext";
 
 const Layout = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const context = useContext(LoginContext);
+  if (!context) return null;
+
+  const { setIsLogin } = context;
+
+  const handleLogout = () => {
+    setIsLogin(false);
+    localStorage.removeItem("is_login"); // optional but clean
+    navigate("/login");
+  };
 
   return (
     <div className="flex flex-col h-screen bg-[#F8F8F8]">
@@ -20,6 +33,15 @@ const Layout = () => {
         </button>
 
         <Header />
+
+        {/* Logout Button */}
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-2 bg-white text-[#FF8A00] px-3 py-1 rounded-md font-medium hover:bg-gray-100 transition"
+        >
+          <LogOut size={18} />
+          Logout
+        </button>
       </header>
 
       {/* Body */}

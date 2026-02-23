@@ -1,28 +1,37 @@
-import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useContext } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+
 import Layout from "./layout/Layout";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Dashboard from "./pages/Dashboard";
 import TablePage from "./pages/TablePage";
 import Settings from "./pages/Settings";
+import Login from "./pages/Login";
+
+import { LoginContext } from "./context/LoginContext";
 
 const App = () => {
-  const queryClient = new QueryClient();
+  const context = useContext(LoginContext);
+
+  if (!context) return null;
+
+  const { isLogin } = context;
+  console.log("isLogin", isLogin);
+
   return (
-    <div>
-      <QueryClientProvider client={queryClient}>
-        {/* <ToastContainer position="bottom-right" /> */}
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Dashboard />} />
-              <Route path="/table" element={<TablePage />} />
-              <Route path="/settings" element={<Settings />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
-      </QueryClientProvider>
-    </div>
+    <Routes>
+      {/* Login */}
+      <Route
+        path="/login"
+        element={isLogin ? <Navigate to="/" /> : <Login />}
+      />
+
+      {/* Protected */}
+      <Route path="/" element={isLogin ? <Layout /> : <Navigate to="/login" />}>
+        <Route index element={<Dashboard />} />
+        <Route path="table" element={<TablePage />} />
+        <Route path="settings" element={<Settings />} />
+      </Route>
+    </Routes>
   );
 };
 
