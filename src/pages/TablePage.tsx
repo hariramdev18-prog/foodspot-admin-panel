@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../services/Api";
 import xlsx from "json-as-xlsx";
+import Tooltip from "../hooks/tools/Tooltip";
 
 interface Feedback {
   id: string;
@@ -144,7 +145,13 @@ const TablePage: React.FC = () => {
                           onClick={() => handleOpenModal(item)}
                         >
                           {isViewed ? "Viewed" : "View"}
-                        </button>
+                        </button>{" "}
+                        ||{" "}
+                        <Tooltip text="Delete">
+                          <button className="bg-gray-600 px-4 py-2 rounded-xl text-white">
+                            Delete
+                          </button>
+                        </Tooltip>
                       </td>
                     </tr>
                   );
@@ -157,7 +164,7 @@ const TablePage: React.FC = () => {
 
       {/* Modal */}
       {selectedFeedback && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+        <div className="fixed inset-0  bg-opacity-40 flex items-center justify-center">
           <div className="bg-white rounded-xl p-6 w-96 shadow-lg">
             <h2 className="text-lg font-semibold mb-4">Feedback Details</h2>
 

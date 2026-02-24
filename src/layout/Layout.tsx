@@ -16,7 +16,7 @@ const Layout = () => {
 
   const handleLogout = () => {
     setIsLogin(false);
-    localStorage.removeItem("is_login"); // optional but clean
+    localStorage.removeItem("is_login");
     navigate("/login");
   };
 

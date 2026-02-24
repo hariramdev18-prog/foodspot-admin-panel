@@ -21,9 +21,8 @@ const Login = () => {
 
   const handleSubmit = () => {
     const finalPin = pin.box1 + pin.box2 + pin.box3 + pin.box4;
-    console.log("PIN:", finalPin);
 
-    if (finalPin === "2074") {
+    if (Number(finalPin) === 2074) {
       setIsLogin(true);
     } else {
       alert("Wrong PIN");
