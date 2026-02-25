@@ -4,6 +4,7 @@ import SideBar from "../components/SideBar";
 import Header from "../components/Header";
 import { Menu, LogOut } from "lucide-react";
 import { LoginContext } from "../context/LoginContext";
+import Icon from "../hooks/tools/Icon";
 
 const Layout = () => {
   const [open, setOpen] = useState(false);
@@ -39,7 +40,7 @@ const Layout = () => {
           onClick={handleLogout}
           className="flex items-center gap-2 bg-white text-[#FF8A00] px-3 py-1 rounded-md font-medium hover:bg-gray-100 transition"
         >
-          <LogOut size={18} />
+          <Icon name="LogOut" size={18} />
           Logout
         </button>
       </header>

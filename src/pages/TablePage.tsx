@@ -3,6 +3,8 @@ import axios from "axios";
 import { BASE_URL } from "../services/Api";
 import xlsx from "json-as-xlsx";
 import Tooltip from "../hooks/tools/Tooltip";
+import Icon from "../hooks/tools/Icon";
+import { EyeIcon } from "../Icons";
 
 interface Feedback {
   id: string;
@@ -76,13 +78,16 @@ const TablePage: React.FC = () => {
       <div className="w-full mx-auto px-4">
         <div className="text-center mb-6 flex justify-between">
           <h3 className="text-2xl font-semibold text-gray-800">Table</h3>
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded-xl"
-            onClick={handleDownload}
-            disabled={data.length === 0}
-          >
-            Download
-          </button>
+          <Tooltip text="Download">
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded-xl flex items-center gap-2"
+              onClick={handleDownload}
+              disabled={data.length === 0}
+            >
+              <Icon name="Download" />
+              Download
+            </button>
+          </Tooltip>
         </div>
 
         <div className="overflow-x-auto bg-white shadow-sm rounded-xl border border-gray-200">
@@ -135,7 +140,7 @@ const TablePage: React.FC = () => {
                         {new Date(item.date).toLocaleString()}
                       </td>
                       <td className="table-td">
-                        <button
+                        {/* <button
                           disabled={isViewed}
                           className={`px-4 py-2 rounded-xl text-white ${
                             isViewed
@@ -144,9 +149,15 @@ const TablePage: React.FC = () => {
                           }`}
                           onClick={() => handleOpenModal(item)}
                         >
+                      
+
                           {isViewed ? "Viewed" : "View"}
-                        </button>{" "}
-                        ||{" "}
+                        </button> */}
+                        <EyeIcon
+                          className="w-7 h-7"
+                          onClick={() => handleOpenModal(item)}
+                        />
+
                         <Tooltip text="Delete">
                           <button className="bg-gray-600 px-4 py-2 rounded-xl text-white">
                             Delete

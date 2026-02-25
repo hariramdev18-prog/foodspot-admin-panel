@@ -6,11 +6,7 @@ interface TooltipProps {
   position?: "top" | "bottom" | "left" | "right"; // Optional placement
 }
 
-const Tooltip: React.FC<TooltipProps> = ({
-  text,
-  children,
-  position = "top",
-}) => {
+const Tooltip = ({ text, children, position = "top" }: TooltipProps) => {
   const [visible, setVisible] = useState(false);
 
   // Tooltip position styles
