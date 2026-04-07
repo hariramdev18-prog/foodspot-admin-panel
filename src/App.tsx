@@ -6,6 +6,7 @@ import TablePage from "./pages/TablePage";
 import Settings from "./pages/Settings";
 import Login from "./pages/Login";
 import { LoginContext } from "./context/LoginContext";
+import Testpage from "./pages/Testpage";
 
 const App = () => {
   const context = useContext(LoginContext);
@@ -24,6 +25,7 @@ const App = () => {
         <Route index element={<Dashboard />} />
         <Route path="table" element={<TablePage />} />
         <Route path="settings" element={<Settings />} />
+        <Route path="test" element={<Testpage />} />
       </Route>
     </Routes>
   );

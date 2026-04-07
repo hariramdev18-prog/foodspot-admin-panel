@@ -1,4 +1,4 @@
-import { LayoutDashboard, Settings, Table } from "lucide-react";
+import { LayoutDashboard, Settings, Table, Table2Icon } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -28,6 +28,12 @@ const Navbar = () => {
       name: "Settings",
       icon: Settings,
       link: "/settings",
+    },
+    {
+      id: 4,
+      name: "D1",
+      icon: Table2Icon,
+      link: "/test",
     },
   ];
 

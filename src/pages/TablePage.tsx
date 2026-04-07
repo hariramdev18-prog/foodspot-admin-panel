@@ -30,7 +30,7 @@ const TablePage: React.FC = () => {
   useEffect(() => {
     const fetchFeedback = async () => {
       try {
-        const response = await axios.get<Feedback[]>(`${BASE_URL}/feedback`);
+        const response = await axios.get<Feedback[]>(`${BASE_URL}`);
         setData(response.data);
       } catch (err) {
         setError("Failed to fetch feedback");
